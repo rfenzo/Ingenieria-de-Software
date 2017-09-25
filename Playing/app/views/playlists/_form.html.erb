@@ -1,0 +1,36 @@
+<%= form_for([@user,playlist]) do |f| %>
+  <% if playlist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(playlist.errors.count, "error") %> prohibited this playlist from being saved:</h2>
+
+      <ul>
+      <% playlist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %>
+    <%= f.text_field :Nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Descripcion %>
+    <%= f.text_area :Descripcion %>
+  </div>
+  <div class="field">
+
+  <div class="field">
+  <%= fields_for(@playlist_song) do |ps|%>
+      <%ps.label 'Selecciona las canciones'%>
+      <br>
+      <%= collection_select(:songs,:id, @all_songs,:id, :Nombre,{},{class: 'select', multiple: true}) %>
+  <%end%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

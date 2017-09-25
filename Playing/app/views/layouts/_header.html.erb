@@ -1,0 +1,39 @@
+<header>
+    <nav class="red-back white-font margin-menu">
+        <ul class="no-list row center-xs middle-xs">
+            <h1 class="no-margin" id='logo'>
+                <%= link_to 'Play.Ing', root_path%>
+            </h1>
+            <li class="col-md">
+                    <%= link_to 'Artistas', artists_url%>
+            </li>
+            <li class="col-md">
+                    <%= link_to 'Albumes', albums_url%>
+            </li>
+            <li class="col-md">
+                    <%= link_to 'Canciones', songs_url%>
+            </li>
+            <li class="col-md">
+                    <%= link_to "Usuarios", users_path %>
+            </li>
+            <% if user_signed_in?%>
+                <li class="col-md">
+                    <%= link_to "Mis Playlists", user_playlists_path(current_user) %>
+                </li>
+                <li class="col-md">
+                    <%= link_to "Mi Cuenta", current_user %>
+                </li>
+                <li class="col-md">
+                    <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete%>
+                </li>
+            <%else%>
+                <li class="col-md">
+                    <%= link_to 'Iniciar Sesion', new_user_session_path%>
+                </li>
+                <li class="col-md">
+                    <%= link_to 'Registrarse', new_user_registration_path%>
+                </li>
+            <% end %>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,29 @@
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Fecha</th>
+      <th>Artist</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.Nombre %></td>
+        <td><%= album.Fecha %></td>
+        <td><%= album.artist.Nombre %></td>
+        <td><%= button_to 'Show', album , :method => "get", class: 'btn red-back white-font'%></td>
+        <td><%= button_to 'Edit', edit_album_path(album) , :method => "get", class: 'btn red-back white-font'%></td>
+        <td><%= button_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn red-back white-font'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= button_to 'New Album', new_album_path , :method => "get", class: 'btn red-back white-font'%>

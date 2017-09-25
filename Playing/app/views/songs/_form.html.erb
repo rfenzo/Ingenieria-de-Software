@@ -1,0 +1,45 @@
+<%= form_for(@song) do |f| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this @song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %>
+    <%= f.text_field :Nombre  , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Duracion %>
+    <%= f.number_field :Duracion  , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Artista %>
+    <br>
+    <br>
+    <%= f.collection_select(:artist_id, Artist.all,:id, :Nombre, {include_blank: true},{class:'floated select'}) %>
+    <%= link_to 'Nuevo Artista', new_artist_url, class: 'btn white-font red-back'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Album %>
+    <br>
+    <br>
+    <%= f.grouped_collection_select(:album_id, Artist.all,:albums,:Nombre,:id, :Nombre, {include_blank: true},{class: 'floated select'})%>
+    <%= link_to 'Nuevo Album', new_album_url, class: 'btn white-font red-back floated'%>
+    <br>
+    <br>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => 'btn red-back white-font'%>
+  </div>
+<% end %>

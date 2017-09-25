@@ -1,0 +1,38 @@
+  <h1><%= @user.email%></h3>
+  <%= image_tag @user.avatar.url(:medium) %>
+  <%= button_to 'Atras',users_url, :method => "get", class: 'btn red-back white-font floated'%>
+  <%= button_to 'Editar cuenta',edit_user_registration_path, :method => "get", class: 'btn red-back white-font'%>
+
+</div>
+
+<%if current_user.try(:admin?)%>
+    <div class="field">
+        <h3>Acciones de admin</h3>
+        <%= form_for(@user) do |f| %>
+          <% if @user.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            Otorgar privilegios de administrador
+            <%= f.radio_button(:admin, "true") %>
+            <%= f.label(:admin_yes, "Si") %>
+            <%= f.radio_button(:admin, "false") %>
+            <%= f.label(:admin_no, "No") %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit :class => 'btn red-back white-font'%>
+          </div>
+        <% end %>
+        
+    </div>
+<%end%>

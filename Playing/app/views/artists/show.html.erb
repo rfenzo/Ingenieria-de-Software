@@ -1,0 +1,50 @@
+<p>
+  <strong>Nombre:</strong>
+  <%= @artist.Nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @artist.Descripcion %>
+</p>
+
+<p>
+  <strong>Genero:</strong>
+  <%= @artist.Genero %>
+</p>
+
+<p>
+  <strong>Origen:</strong>
+  <%= @artist.Origen %>
+</p>
+
+<%if @artist.artistmembers.each.any?%>
+<br>
+<h3>Integrantes</h3>
+<%@artist.artistmembers.each do |m|%>
+  <%artista = Artist.find(m.member_id)%>
+    <li class="row">
+      <ul>
+        <%=link_to artista.Nombre,artista%>
+      </ul>
+    </li>
+<%end%>
+<%end%>
+
+
+<br>
+<h3>Albumes:</h3>
+<%@artist.albums.each do |a|%>
+<ul class='row no-list'>
+  <li>
+    <%= image_tag a.image.url , height: '40', width: '40'%>
+  </li>
+  <li>
+    <%=link_to a.Nombre, a%>
+  </li>
+</ul>
+<%end%>
+
+
+<%= button_to 'Edit', edit_artist_path(@artist) , :method => "get", class:'floated btn red-back white-font'%>
+<%= button_to 'Back', artists_path , :method => "get", class:'floated btn red-back white-font'%>

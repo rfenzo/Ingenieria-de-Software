@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Nombre: MyString
+  Descripcion: MyText
+  Duracion: 1
+  Calificacion: 1
+  user: one
+  song: one
+
+two:
+  Nombre: MyString
+  Descripcion: MyText
+  Duracion: 1
+  Calificacion: 1
+  user: two
+  song: two

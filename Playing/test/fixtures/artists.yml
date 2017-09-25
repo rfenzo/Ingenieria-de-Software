@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Nombre: MyString
+  Descripcion: MyText
+  Genero: MyString
+  Origen: MyString
+  Actividad: 2017-09-19
+  Integrantes: MyText
+
+two:
+  Nombre: MyString
+  Descripcion: MyText
+  Genero: MyString
+  Origen: MyString
+  Actividad: 2017-09-19
+  Integrantes: MyText

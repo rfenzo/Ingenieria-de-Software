@@ -1,0 +1,7 @@
+<% if current_user %>
+    <h1>Bienvenido <%= current_user.email%></h1>
+<%else%>
+    <h1 class="center-xs middle-xs">
+        Bienvenido!
+    </h1>
+<%end%>

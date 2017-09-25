@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @playlist.Nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @playlist.Descripcion %>
+</p>
+
+<p>
+  <strong>Duracion:</strong>
+  <%= @playlist.Duracion %>
+</p>
+
+<p>
+  <strong>Calificacion:</strong>
+  <%= @playlist.Calificacion %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @playlist.user.email %>
+</p>
+
+<br>
+<h3>Canciones</h3>
+<%@playlist.playlistsongs.each do |s|%>
+  <%x = Song.find(s.song_id)%>
+  <%artista = Artist.find(x.artist_id).Nombre%>
+    <li class="row">
+      <ul>
+        <%=link_to x.Nombre+'-'+artista,x%>
+      </ul>
+    </li>
+<%end%>
+
+<%= link_to 'Edit', edit_user_playlist_path(@user,@playlist) %> |
+<%= link_to 'Back', user_playlists_path %>

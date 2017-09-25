@@ -1,0 +1,69 @@
+<%= form_for(artist) do |f| %>
+  <% if artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+      <% artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Nombre %>
+    <%= f.text_field :Nombre , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Descripcion %>
+    <%= f.text_area :Descripcion ,rows: 5, class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Genero %>
+    <%= f.text_field :Genero , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Origen %>
+    <%= f.text_field :Origen , class: 'form-control'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :Inicio_de_Actividad %>
+    <br/><br/>
+     <%= f.date_select(:Actividad ,{:order => [:day, :month, :year], :start_year => 1920, :end_year => 2017},{class: 'select'})%>
+  </div>
+
+  <div class="field">
+    <%= check_box_tag(:grupo) %>
+    <%= label_tag(:grupo, "Es un grupo", style:'font-size:1.1em') %>
+  </div>
+
+  <div class="field" style="display:none;" id='integrantes'">
+    <%= f.label :Integrantes %>
+    <%= fields_for(@artist_member) do |am|%>
+      <%am.label 'Selecciona los integrantes'%>
+      <br>
+      <%= collection_select(:members,:id, @all_members,:id, :Nombre,{},{class: 'select', multiple: true}) %>
+  <%end%>
+  </div>
+
+  <script type="text/javascript">
+  var checkbox = document.getElementById('grupo');
+  var details_div = document.getElementById('integrantes');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'block';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+  </script>
+
+  <div class="actions">
+    <%= f.submit :class =>'btn red-back white-font'%>
+  </div>
+<% end %>
