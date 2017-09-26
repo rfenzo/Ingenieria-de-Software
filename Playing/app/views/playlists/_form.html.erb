@@ -13,24 +13,23 @@
 
   <div class="field">
     <%= f.label :Nombre %>
-    <%= f.text_field :Nombre %>
+    <%= f.text_field :Nombre , class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= f.label :Descripcion %>
-    <%= f.text_area :Descripcion %>
+    <%= f.text_area :Descripcion, class: 'form-control' %>
   </div>
   <div class="field">
-
-  <div class="field">
-  <%= fields_for(@playlist_song) do |ps|%>
-      <%ps.label 'Selecciona las canciones'%>
-      <br>
-      <%= collection_select(:songs,:id, @all_songs,:id, :Nombre,{},{class: 'select', multiple: true}) %>
-  <%end%>
+    <%= f.label :Canciones %>
+    <%= fields_for(@playlist_song) do |ps|%>
+        <%ps.label 'Selecciona las canciones'%>
+        <br>
+        <%= collection_select(:songs,:id, @all_songs,:id, :Nombre,{},{class: 'select', multiple: true}) %>
+    <%end%>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class =>'btn red-back white-font'%>
   </div>
 <% end %>

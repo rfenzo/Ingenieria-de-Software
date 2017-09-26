@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170925022040) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string   "Nombre"
     t.date     "Fecha"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20170925022040) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.index ["artist_id"], name: "index_albums_on_artist_id"
-    t.index ["user_id"], name: "index_albums_on_user_id"
+    t.index ["artist_id"], name: "index_albums_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_albums_on_user_id", using: :btree
   end
 
   create_table "artistmembers", force: :cascade do |t|
@@ -44,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170925022040) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["user_id"], name: "index_artists_on_user_id"
+    t.index ["user_id"], name: "index_artists_on_user_id", using: :btree
   end
 
   create_table "playlists", force: :cascade do |t|
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170925022040) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["user_id"], name: "index_playlists_on_user_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id", using: :btree
   end
 
   create_table "playlistsongs", force: :cascade do |t|
@@ -73,9 +76,9 @@ ActiveRecord::Schema.define(version: 20170925022040) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.index ["album_id"], name: "index_songs_on_album_id"
-    t.index ["artist_id"], name: "index_songs_on_artist_id"
-    t.index ["user_id"], name: "index_songs_on_user_id"
+    t.index ["album_id"], name: "index_songs_on_album_id", using: :btree
+    t.index ["artist_id"], name: "index_songs_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_songs_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,8 +101,15 @@ ActiveRecord::Schema.define(version: 20170925022040) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "admin",                  default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "albums", "artists"
+  add_foreign_key "albums", "users"
+  add_foreign_key "artists", "users"
+  add_foreign_key "playlists", "users"
+  add_foreign_key "songs", "albums"
+  add_foreign_key "songs", "artists"
+  add_foreign_key "songs", "users"
 end
