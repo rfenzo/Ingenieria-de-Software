@@ -1083,3 +1083,63 @@ Processing by ArtistsController#new as HTML
 Completed 200 OK in 87ms (Views: 78.1ms | ActiveRecord: 1.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-10-06 21:55:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (10.6ms)
+  Rendered layouts/_header.html.erb (6.3ms)
+  Rendered layouts/_center.html.erb (0.7ms)
+  Rendered layouts/_centerend.html.erb (2.2ms)
+Completed 200 OK in 1489ms (Views: 1459.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/songs" for 127.0.0.1 at 2017-10-06 21:55:36 -0300
+Processing by SongsController#index as HTML
+  Rendering songs/index.html.erb within layouts/application
+  [1m[36mSong Load (7.5ms)[0m  [1m[34mSELECT "songs".* FROM "songs"[0m
+  Rendered songs/index.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_center.html.erb (0.7ms)
+  Rendered layouts/_centerend.html.erb (0.7ms)
+Completed 200 OK in 110ms (Views: 77.0ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/albums" for 127.0.0.1 at 2017-10-06 21:55:38 -0300
+Processing by AlbumsController#index as HTML
+  Rendering albums/index.html.erb within layouts/application
+  [1m[36mAlbum Load (6.3ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  Rendered albums/index.html.erb within layouts/application (17.2ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_center.html.erb (0.7ms)
+  Rendered layouts/_centerend.html.erb (0.7ms)
+Completed 200 OK in 111ms (Views: 79.9ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/artists" for 127.0.0.1 at 2017-10-06 21:55:39 -0300
+Processing by ArtistsController#index as HTML
+  Rendering artists/index.html.erb within layouts/application
+  [1m[36mArtist Load (2.5ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  Rendered artists/index.html.erb within layouts/application (11.7ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_center.html.erb (0.9ms)
+  Rendered layouts/_centerend.html.erb (0.8ms)
+Completed 200 OK in 114ms (Views: 80.5ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/artists/new" for 127.0.0.1 at 2017-10-06 21:55:40 -0300
+Processing by ArtistsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-06 21:55:41 -0300
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (44.1ms)
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_center.html.erb (0.8ms)
+  Rendered layouts/_centerend.html.erb (0.9ms)
+Completed 200 OK in 247ms (Views: 129.9ms | ActiveRecord: 70.1ms)
+
+
