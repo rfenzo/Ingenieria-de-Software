@@ -17,7 +17,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create playlist" do
     assert_difference('Playlist.count') do
-      post playlists_url, params: { playlist: { Calificacion: @playlist.Calificacion, Descripcion: @playlist.Descripcion, Duracion: @playlist.Duracion, Nombre: @playlist.Nombre, song_id: @playlist.song_id, user_id: @playlist.user_id } }
+      post playlists_url, params: { playlist: { Calificacion: @playlist.Calificacion, Descripcion: @playlist.Descripcion, Duracion: @playlist.Duracion, Nombre: @playlist.Nombre, user_id: @playlist.user_id } }
     end
 
     assert_redirected_to playlist_url(Playlist.last)
@@ -34,7 +34,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update playlist" do
-    patch playlist_url(@playlist), params: { playlist: { Calificacion: @playlist.Calificacion, Descripcion: @playlist.Descripcion, Duracion: @playlist.Duracion, Nombre: @playlist.Nombre, song_id: @playlist.song_id, user_id: @playlist.user_id } }
+    patch playlist_url(@playlist), params: { playlist: { Calificacion: @playlist.Calificacion, Descripcion: @playlist.Descripcion, Duracion: @playlist.Duracion, Nombre: @playlist.Nombre, user_id: @playlist.user_id } }
     assert_redirected_to playlist_url(@playlist)
   end
 

@@ -6,7 +6,6 @@ one:
   Duracion: 1
   Calificacion: 1
   user: one
-  song: one
 
 two:
   Nombre: MyString
@@ -14,4 +13,3 @@ two:
   Duracion: 1
   Calificacion: 1
   user: two
-  song: two

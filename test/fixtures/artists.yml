@@ -5,13 +5,13 @@ one:
   Descripcion: MyText
   Genero: MyString
   Origen: MyString
-  Actividad: 2017-09-19
-  Integrantes: MyText
+  Actividad: 2017-10-04
+  Integrantes: MyString
 
 two:
   Nombre: MyString
   Descripcion: MyText
   Genero: MyString
   Origen: MyString
-  Actividad: 2017-09-19
-  Integrantes: MyText
+  Actividad: 2017-10-04
+  Integrantes: MyString
